@@ -2,6 +2,8 @@ package battleship.graphicalUserInterface;
 
 import javax.swing.JFrame;
 
+import battleship.game.MainGame;
+
 public class InterfaceMain {
 
 	public static void main(String[] args)
@@ -9,7 +11,7 @@ public class InterfaceMain {
 		
 		BattleshipWindow window = new BattleshipWindow();				//create a window object
 		
-		window.addButtons();				//add the items to the window
+		window.runGame();				//add the items to the window
 		
 		window.setSize(600, 1000);			//set the frame size
 		

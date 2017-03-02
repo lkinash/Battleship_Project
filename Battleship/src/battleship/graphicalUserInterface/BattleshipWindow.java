@@ -1,6 +1,7 @@
 package battleship.graphicalUserInterface;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -9,18 +10,23 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import battleship.game.MainGame;
+
 
 public class BattleshipWindow extends JFrame{
 
-	JFrame frame = new JFrame();
 	JPanel mainPanel = new JPanel();
-	JLabel priceLabel = new JLabel("$0.00");					//add a number of panels and frames for organization
+	JLabel mainLabel = new JLabel("Battleship");					//add a number of panels and frames for organization
 
-	Color color = new Color(203,253,255);
+	Color color = new Color(35,128,235);
 	
-	
-	public void addButtons(){
+	public void runGame(){
 		
+		mainPanel.setLayout( new FlowLayout());	
+		mainPanel.setBackground(color);
+		mainPanel.add(mainLabel);
+		
+		add(mainPanel);
 	}
 	
 }
