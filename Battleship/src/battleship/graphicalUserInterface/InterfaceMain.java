@@ -9,16 +9,19 @@ public class InterfaceMain {
 	public static void main(String[] args)
 	{
 		
-		BattleshipWindow window = new BattleshipWindow();				//create a window object
+		//BattleshipWindow window = new BattleshipWindow();				//create a window object
 		
-		window.runGame();				//add the items to the window
+		//window.runGame();				//add the items to the window
 		
-		window.setSize(600, 1000);			//set the frame size
+		//window.setSize(800, 1000);			//set the frame size
 		
-		window.setVisible(true);				//make it visable
+		//window.setVisible(true);				//make it visable
 		
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		//add a close option
+		//window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		//add a close option
 			
+		MainGame game = new MainGame();
+		game.run();
+		
 	}
 	
 	

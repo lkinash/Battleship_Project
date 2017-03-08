@@ -4,14 +4,9 @@ import java.util.Random;
 
 public class RandomNumber {
 
-	Random random;
+	static Random random = new Random();
 	
-	public RandomNumber(){
-		
-		this.random = new Random();
-	}
-	
-	public int getRandom(int max){
+	public static int getRandom(int max){
 		return random.nextInt(max);
 	}
 	

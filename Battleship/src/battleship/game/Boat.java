@@ -1,5 +1,6 @@
 package battleship.game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import battleship.service.Coordinate;
@@ -10,17 +11,20 @@ public class Boat {
 	
 	private String name;
 	
+	private boolean sunk;
+	
 	private List<Coordinate> coordinates;
 	
 	public Boat(){
 		
 	}
 	
-	public Boat(int newLength, String newName, List<Coordinate> newCoordinates ){
+	public Boat(int newLength, String newName){
 		
 		this.length = newLength;
 		this.name = newName;
-		this.coordinates = newCoordinates;
+		this.coordinates = new ArrayList<Coordinate>() ;
+		this.sunk = false;
 		
 	}
 	
@@ -38,6 +42,14 @@ public class Boat {
 	
 	public String getName(){
 		return this.name;
+	}
+	
+	public void setSunk(boolean newSunk){
+		this.sunk = newSunk;	
+	}
+	
+	public boolean getSunk(){
+		return this.sunk;
 	}
 	
 	public void addCoordinates(Coordinate newCoordinates){
