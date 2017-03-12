@@ -22,7 +22,7 @@ public class MainGame {
 		player.createBoats();
 		player.createGrid();
 		player.placeBoats();
-		//player.printGrid(true);
+		player.printGrid(true);
 		
 		int x, y;
 		
@@ -33,7 +33,7 @@ public class MainGame {
 			
 			if(!player.hasBeenShot(x, y)){
 				player.shoot(x, y);
-				//player.printGrid(true);
+				player.printGrid(true);
 			}
 			
 			if(player.getWinner())

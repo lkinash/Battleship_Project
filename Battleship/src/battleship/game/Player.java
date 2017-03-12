@@ -74,7 +74,7 @@ public class Player {
 			System.out.println("");
 			
 		}	
-		
+		System.out.println("");
 	}
 	
 	
