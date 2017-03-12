@@ -1,5 +1,7 @@
 package battleship.game;
 
+import java.util.Stack;
+
 import battleship.service.Constants;
 import battleship.service.Coordinate;
 import battleship.service.RandomNumber;
@@ -18,6 +20,9 @@ public class Player {
 	
 	private GridSquare[][] grid;
 	
+	private Stack<Coordinate> hits;
+	
+	
 	public Player(boolean humanPlayer){
 		
 		this.isHuman = humanPlayer;
@@ -33,6 +38,8 @@ public class Player {
 		createGrid();
 		
 		this.winner = false;
+		
+		hits = new Stack<Coordinate>();
 		
 
 	}
@@ -149,6 +156,7 @@ public class Player {
 		
 		if(grid[x][y].getBoat()){
 			hitCount++;
+			hits.push(new Coordinate(x, y));
 			return true;
 		}
 		
@@ -166,6 +174,14 @@ public class Player {
 	
 	public int getShotCount(){
 		return this.shotCount;
+	}
+	
+	public boolean getStackIsEmpty(){
+		return hits.isEmpty();
+	}
+	
+	public Coordinate getStackTop(){
+		return hits.pop();
 	}
 	
 }

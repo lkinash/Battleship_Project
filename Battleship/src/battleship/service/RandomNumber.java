@@ -9,5 +9,5 @@ public class RandomNumber {
 	public static int getRandom(int max){
 		return random.nextInt(max);
 	}
-	
+
 }
