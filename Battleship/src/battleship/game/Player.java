@@ -1,5 +1,6 @@
 package battleship.game;
 
+import java.util.List;
 import java.util.Stack;
 
 import battleship.service.Constants;
@@ -84,6 +85,38 @@ public class Player {
 		System.out.println("");
 	}
 	
+	public boolean getBoatSunk(){
+		
+		for(int i = 0; i < Constants.BOAT_COUNT; i++){
+			
+			int hitCount = 0;
+			List<Coordinate> coordinates = boats[i].getCoordinatesList();
+			
+			for(Coordinate temp: coordinates){
+				
+				if(isHit(temp))
+					hitCount++;
+				
+			}
+			
+			if(hitCount == boats[i].getLength() && !boats[i].getSunk()){
+				boats[i].setSunk(true);
+				System.out.println("Sunk: " + boats[i].getName());
+				return boats[i].getSunk();
+			}
+		}
+		
+		return false;
+	}
+	
+	public boolean isHit(Coordinate coordinate){
+	
+		if(grid[coordinate.getX()][coordinate.getY()].getShot() && grid[coordinate.getX()][coordinate.getY()].getBoat())
+			return true;
+		else
+			return false;
+		
+	}
 	
 	public void placeBoats(){
 		
