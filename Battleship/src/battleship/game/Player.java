@@ -76,7 +76,7 @@ public class Player {
 				else if(grid[i][j].getBoat())
 					System.out.print("□");
 				else
-					System.out.print(" ");
+					System.out.print("-");
 				
 				System.out.print(" ");
 			}
@@ -103,8 +103,8 @@ public class Player {
 			
 			if(hitCount == boats[i].getLength() && !boats[i].getSunk()){
 				boats[i].setSunk(true);
-				System.out.println("Sunk: " + boats[i].getName());
-				return boats[i].getSunk();
+				//System.out.println("Sunk: " + boats[i].getName());
+				return true;
 			}
 		}
 		
@@ -112,7 +112,10 @@ public class Player {
 	}
 	
 	public boolean isHit(Coordinate coordinate){
-	
+		
+		if(coordinate.getX() < 0 || coordinate.getX() > 9 || coordinate.getY() < 0 || coordinate.getY() > 9){
+			return false;
+		}
 		if(grid[coordinate.getX()][coordinate.getY()].getShot() && grid[coordinate.getX()][coordinate.getY()].getBoat())
 			return true;
 		else
@@ -219,7 +222,7 @@ public class Player {
 			hitCount++;
 			if(!getBoatSunk()){
 				hits.push(new Coordinate(x, y));
-				new Coordinate(x, y).printCoordinate();
+				//new Coordinate(x, y).printCoordinate();
 			}
 
 			return true;
@@ -240,8 +243,8 @@ public class Player {
 				for(Coordinate temp: coordinateList){
 				
 					if(temp.getX() == coordinate.getX() && temp.getY() == coordinate.getY()){
-						System.out.println("True");
-						coordinate.printCoordinate();
+						//System.out.println("True");
+						//coordinate.printCoordinate();
 						return true;
 					}
 				}
@@ -254,6 +257,9 @@ public class Player {
 	
 	public boolean getWinner(){
 		if(hitCount > 16){
+			this.winner = true;
+		}
+		if(boats[0].getSunk() && boats[1].getSunk() && boats[2].getSunk() && boats[3].getSunk() && boats[4].getSunk()){
 			this.winner = true;
 		}
 		
