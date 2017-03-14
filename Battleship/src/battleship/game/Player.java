@@ -65,16 +65,18 @@ public class Player {
 	
 	public void printGrid(boolean hits){
 		
+		System.out.println("----------");
+		
 		for(int i = 0; i < Constants.GRID_SIZE; i++){
 			for(int j = 0; j < Constants.GRID_SIZE; j++){
 				if(grid[i][j].getBoat() && grid[i][j].getShot() && hits)
 					System.out.print("■");
 				else if(grid[i][j].getShot() && hits)
-					System.out.print("X");
+					System.out.print("x");
 				else if(grid[i][j].getBoat())
 					System.out.print("□");
 				else
-					System.out.print("*");
+					System.out.print(" ");
 				
 				System.out.print(" ");
 			}
@@ -82,7 +84,7 @@ public class Player {
 			System.out.println("");
 			
 		}	
-		System.out.println("");
+		System.out.println("----------");
 	}
 	
 	public boolean getBoatSunk(){
@@ -128,14 +130,18 @@ public class Player {
 				x = RandomNumber.getRandom(Constants.GRID_SIZE);
 				y = RandomNumber.getRandom(Constants.GRID_SIZE);
 			
-				if(tryPlacingBoats(x, y, i))
-					break;
-				
+				if(RandomNumber.getRandom(2) < 1){
+					if(tryPlacingBoatsX(x, y, i))
+						break;
+				}
+				else
+					if(tryPlacingBoatsY(x, y, i))
+						break;
 			}
 		}
 	}
 	
-	private boolean tryPlacingBoats(int x, int y, int i){
+	private boolean tryPlacingBoatsY(int x, int y, int i){
 		
 		boolean placeable = true;
 		
@@ -156,7 +162,12 @@ public class Player {
 				
 		}
 		
-		placeable = true;
+		return false;
+	}
+	
+	private boolean tryPlacingBoatsX(int x, int y, int i){
+		
+		boolean placeable = true;
 		
 		if(x + boats[i].getLength() < Constants.GRID_SIZE){
 			
@@ -178,6 +189,7 @@ public class Player {
 		return false;
 	}
 	
+
 	public boolean hasBeenShot(int x, int y){
 		return grid[x][y].getShot();
 	}
@@ -195,6 +207,49 @@ public class Player {
 		
 		return false;
 		
+	}
+	
+	
+	public boolean smartShoot(int x, int y){
+		
+		grid[x][y].setShot(true);
+		shotCount++;
+		
+		if(grid[x][y].getBoat()){
+			hitCount++;
+			if(!getBoatSunk()){
+				hits.push(new Coordinate(x, y));
+				new Coordinate(x, y).printCoordinate();
+			}
+
+			return true;
+		}
+		
+		return false;
+		
+	}
+	
+	public boolean coordinateFromSunkBoat(Coordinate coordinate){
+	
+		for(int i = 0; i < Constants.BOAT_COUNT; i++){
+			
+			if(boats[i].getSunk()){
+				
+				List<Coordinate> coordinateList = boats[i].getCoordinatesList();
+			
+				for(Coordinate temp: coordinateList){
+				
+					if(temp.getX() == coordinate.getX() && temp.getY() == coordinate.getY()){
+						System.out.println("True");
+						coordinate.printCoordinate();
+						return true;
+					}
+				}
+			}
+			
+		}
+		
+		return false;
 	}
 	
 	public boolean getWinner(){

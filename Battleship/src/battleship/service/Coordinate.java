@@ -32,4 +32,8 @@ public class Coordinate {
 	public int getY(){
 		return this.y;
 	}
+	
+	public void printCoordinate(){
+		System.out.println("X: " + x + ", Y: " + y);
+	}
 }
