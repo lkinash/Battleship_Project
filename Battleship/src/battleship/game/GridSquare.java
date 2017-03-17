@@ -8,14 +8,17 @@ public class GridSquare {
 	
 	private boolean shot;
 	
+	private int probability;
+	
 	public GridSquare(){
 		
 	}
 	
-	public GridSquare(boolean hasBoat, boolean hasShot){
+	public GridSquare(boolean hasBoat, boolean hasShot, int prob){
 		
 		this.boat = hasBoat;
 		this.shot = hasShot;
+		this.probability = prob;
 		
 	}
 	
@@ -33,6 +36,14 @@ public class GridSquare {
 	
 	public boolean getShot(){
 		return this.shot;
+	}
+	
+	public void setProb(int newProb){
+		this.probability = newProb;	
+	}
+	
+	public int getProb(){
+		return this.probability;
 	}
 	
 }

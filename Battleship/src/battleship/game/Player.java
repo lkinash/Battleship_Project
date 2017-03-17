@@ -5,6 +5,7 @@ import java.util.Stack;
 
 import battleship.service.Constants;
 import battleship.service.Coordinate;
+import battleship.service.GridProb;
 import battleship.service.RandomNumber;
 
 public class Player {
@@ -59,7 +60,7 @@ public class Player {
 		
 		for(int i = 0; i < Constants.GRID_SIZE; i++)
 			for(int j = 0; j < Constants.GRID_SIZE; j++)
-				grid[i][j] = new GridSquare(false, false);			//all squares start with no boat and no shot tried
+				grid[i][j] = new GridSquare(false, false, GridProb.getDefaultSquareProb(i, j) );			//all squares start with no boat and no shot tried
 				
 	}
 	
@@ -79,6 +80,22 @@ public class Player {
 					System.out.print("-");
 				
 				System.out.print(" ");
+			}
+			
+			System.out.println("");
+			
+		}	
+		System.out.println("----------");
+	}
+	
+	public void printProbability(){
+		
+		System.out.println("----------");
+		
+		for(int i = 0; i < Constants.GRID_SIZE; i++){
+			for(int j = 0; j < Constants.GRID_SIZE; j++){
+				
+				System.out.print(grid[i][j].getProb() + " ");
 			}
 			
 			System.out.println("");
@@ -264,6 +281,23 @@ public class Player {
 		}
 		
 		return this.winner;
+	}
+	
+	public Coordinate getHighestProbUnshot(){
+		
+		int prob = 0;
+		Coordinate result = new Coordinate(0, 0);
+		
+		for(int i = 0; i < Constants.GRID_SIZE; i++){
+			for(int j = 0; j < Constants.GRID_SIZE; j++){
+				if(grid[i][j].getProb() > prob){
+					result = new Coordinate(i,j);
+					prob = grid[i][j].getProb();
+				}
+			}
+		}
+		
+		return result;
 	}
 	
 	public int getShotCount(){
