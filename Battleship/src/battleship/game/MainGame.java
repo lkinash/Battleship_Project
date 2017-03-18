@@ -24,16 +24,15 @@ public class MainGame {
 	public void run(){
 	
 		
-		for(int i = 0; i < 1; i++){
+		for(int i = 0; i < 10000; i++){
 		
 		player = new Player(false);
 		player.createBoats();
 		player.createGrid();
 		player.placeBoats();
 		//player.printGrid(true);
-		player.printProbability();
+		//player.printProbability();
 		
-		System.out.println(player.getHighestProbUnshot().getX() + " " +  player.getHighestProbUnshot().getX());
 		
 		//play = new RandomPlay();
 			
@@ -45,13 +44,13 @@ public class MainGame {
 		
 		play = new HeatMapPlay();
 			
-		//play.basicPlay(player);
+		play.basicPlay(player);
 		//play.basicWithBoatFinder(player);
 		//play.basicWithBoatFinderParity(player);
 		//play.basicWithSmartBoatFinder(player);
 		//play.basicWithSmartBoatFinderParity(player);
 			
-		//System.out.println(player.getShotCount());	
+		System.out.println(player.getShotCount());	
 		
 		}
 	}

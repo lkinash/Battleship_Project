@@ -300,6 +300,109 @@ public class Player {
 		return result;
 	}
 	
+	public void updateProb(int x, int y){
+		
+		grid[x][y].setProb(0);
+		
+		if(grid[x][y].getBoat()){
+			//if(getBoatSunk()){
+				
+			//}
+			//else{
+				increaseProbAround(x, y);
+
+			//}
+				
+		}
+		else{
+			decreaseProbAround(x, y);
+
+		}
+			
+		
+	}
+	
+	public void increaseProbAround(int x, int y){
+		
+		if(x < 9 ){
+			grid[x + 1][y].setProb(2 * (grid[x + 1][y].getProb()));
+		}
+
+		if(x > 0){
+			grid[x - 1][y].setProb(2 * (grid[x - 1][y].getProb()));
+		}
+		
+		if(y < 9){
+			grid[x][y + 1].setProb(2 * (grid[x][y + 1].getProb()));
+		}
+		
+		if(y > 0){
+			grid[x][y - 1].setProb(2 * (grid[x][y - 1].getProb()));
+		}
+		
+	}
+	
+	public void decreaseProbAround(int x, int y){
+	
+		for(int i = 1; i < 6; i++){
+			if(x < (Constants.GRID_SIZE - i)){
+				if(!(grid[x + i][y].getProb() == 0)){
+					grid[x + i][y].setProb((grid[x + i][y].getProb()) - distDecrease(i));
+					if(grid[x + i][y].getProb() < 1)
+						grid[x + i][y].setProb(1);
+				}
+			}
+		}
+		
+		for(int i = 1; i < 6; i++){
+			if(x >= i){
+				if(!(grid[x - i][y].getProb() == 0)){
+					grid[x - i][y].setProb((grid[x - i][y].getProb()) - distDecrease(i));
+					if(grid[x - i][y].getProb() < 1)
+						grid[x - i][y].setProb(1);
+				}
+			}
+		}
+
+		for(int i = 1; i < 6; i++){
+			if(y < (Constants.GRID_SIZE - i)){
+				if(!(grid[x][y + i].getProb() == 0)){
+					grid[x][y + i].setProb((grid[x][y + i].getProb()) - distDecrease(i));
+					if(grid[x][y + i].getProb() < 1)
+						grid[x][y + i].setProb(1);
+				}
+			}
+		}
+		
+		for(int i = 1; i < 6; i++){
+			if(y >= i){
+				if(!(grid[x][y - i].getProb() == 0)){
+					grid[x][y - i].setProb((grid[x][y - i].getProb()) - distDecrease(i));
+					if(grid[x][y - i].getProb() < 1)
+						grid[x][y - i].setProb(1);
+				}
+			}
+		}
+		
+	}
+	
+	public int distDecrease(int i){
+		
+		if(i == 1)
+			return 12;
+		else if(i == 2)
+			return 7;
+		else if(i == 3)
+			return 3;
+		else if(i == 4)
+			return 2;
+		else if(i == 5)
+			return 1;
+		else
+			return 0;
+		
+	}
+	
 	public int getShotCount(){
 		return this.shotCount;
 	}

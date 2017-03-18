@@ -10,31 +10,28 @@ public class HeatMapPlay implements Play {
 		
 	}
 	
-	public void heatMapPlay(Player player){
-			
+	public void basicPlay(Player player) {
+		
 		int x, y;
 		Coordinate coordinate;
 		
 		while(true){
 			
-			
-			x = RandomNumber.getRandom(Constants.GRID_SIZE);
-			y = RandomNumber.getRandom(Constants.GRID_SIZE);
+			coordinate = player.getHighestProbUnshot();
+			x = coordinate.getX();
+			y = coordinate.getY();
 				
 			if(!player.hasBeenShot(x, y)){
 				player.shoot(x, y);
 				//player.printGrid(true);
+				player.updateProb(x, y);
+				//player.printProbability();
 			}
 				
 			if(player.getWinner()){
 				break;
 			}	
 		}
-	}
-
-	
-	public void basicPlay(Player player) {
-		// TODO Auto-generated method stub
 		
 	}
 
