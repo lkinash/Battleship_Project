@@ -1,5 +1,7 @@
+
 package battleship.game;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
@@ -24,6 +26,10 @@ public class Player {
 	
 	private Stack<Coordinate> hits;
 	
+	private List<Coordinate> hitList;
+	
+	private List<Coordinate> sunkBoatHitList;
+	
 	
 	public Player(boolean humanPlayer){
 		
@@ -42,6 +48,9 @@ public class Player {
 		this.winner = false;
 		
 		hits = new Stack<Coordinate>();
+		
+		hitList = new ArrayList<Coordinate>();
+		sunkBoatHitList = new ArrayList<Coordinate>();
 		
 
 	}
@@ -161,11 +170,24 @@ public class Player {
 		}
 	}
 	
+	public void placeBoatsSet(){
+		
+		int x, y;
+		
+		tryPlacingBoatsX(3, 5, 0);
+		tryPlacingBoatsY(9, 2, 1);
+		tryPlacingBoatsY(0, 5, 2);
+		tryPlacingBoatsY(1, 3, 3);
+		tryPlacingBoatsY(3, 8, 4);
+		
+		
+	}
+	
 	private boolean tryPlacingBoatsY(int x, int y, int i){
 		
 		boolean placeable = true;
 		
-		if(y + boats[i].getLength() < Constants.GRID_SIZE){
+		if(y + boats[i].getLength() <= Constants.GRID_SIZE){
 			
 			for(int j = 0; j < boats[i].getLength(); j++){
 				if(grid[x][y + j].getBoat()){
@@ -189,7 +211,7 @@ public class Player {
 		
 		boolean placeable = true;
 		
-		if(x + boats[i].getLength() < Constants.GRID_SIZE){
+		if(x + boats[i].getLength() <= Constants.GRID_SIZE){
 			
 			for(int j = 0; j < boats[i].getLength(); j++){
 				if(grid[x+j][y].getBoat()){
@@ -262,6 +284,7 @@ public class Player {
 					if(temp.getX() == coordinate.getX() && temp.getY() == coordinate.getY()){
 						//System.out.println("True");
 						//coordinate.printCoordinate();
+						addToSunkBoatList(i);
 						return true;
 					}
 				}
@@ -270,6 +293,19 @@ public class Player {
 		}
 		
 		return false;
+	}
+	
+	public void addToSunkBoatList(int i){
+		
+		if(boats[i].getSunk()){
+			
+			List<Coordinate> coordinateList = boats[i].getCoordinatesList();
+		
+			for(Coordinate temp: coordinateList){
+			
+				sunkBoatHitList.add(temp);
+			}
+		}
 	}
 	
 	public boolean getWinner(){
@@ -300,18 +336,43 @@ public class Player {
 		return result;
 	}
 	
+	public Coordinate getHighestProbUnshotGreater(){
+		
+		int prob = 0;
+		Coordinate result = new Coordinate(0, 0);
+		
+		for(int i = 0; i < Constants.GRID_SIZE; i++){
+			for(int j = 0; j < Constants.GRID_SIZE; j++){
+				if(grid[i][j].getProb() > prob){
+					result = new Coordinate(i,j);
+					prob = grid[i][j].getProb();
+				}
+			}
+		}
+		
+		//System.out.println("Prob: " + prob);
+		
+		if(prob > 1)
+			return result;
+		else
+			return null;
+	}
+	
+	
 	public void updateProb(int x, int y){
 		
 		grid[x][y].setProb(0);
 		
 		if(grid[x][y].getBoat()){
-			//if(getBoatSunk()){
+			if(getBoatSunk()){
+			
+				decreaseProbAroundBoat(x,y);
+			}
+			else{
 				
-			//}
-			//else{
 				increaseProbAround(x, y);
 
-			//}
+			}
 				
 		}
 		else{
@@ -320,6 +381,58 @@ public class Player {
 		}
 			
 		
+	}
+	
+	
+	public void updateProbSmart(int x, int y){
+		
+		grid[x][y].setProb(0);
+		
+		if(grid[x][y].getBoat()){
+			if(getBoatSunk()){
+			
+				decreaseProbAroundBoat(x,y);
+			}
+			else{
+				
+				increaseProbAround(x, y);
+
+			}
+				
+		}
+		else{
+			decreaseProbAround(x, y);
+
+		}
+		
+		boolean checker = false;
+			
+		for(Coordinate temp: hitList){
+			for(Coordinate tempSunk: sunkBoatHitList){
+				
+				if(temp.equals(tempSunk)){
+					checker = true;
+				}
+			}
+			
+			if(!checker){
+				
+				int s = temp.getX();
+				int t = temp.getY();
+				
+				if(!grid[s][t].getShot() && (grid[s][t].getProb() != 0)){
+					increaseProbAround(s,t);
+				}
+			}
+		}
+		
+		
+	}
+	
+	public void addHitToList(int x, int y){
+		if(grid[x][y].getShot() && grid[x][y].getBoat()){
+			hitList.add(new Coordinate(x, y));
+		}
 	}
 	
 	public void increaseProbAround(int x, int y){
@@ -342,13 +455,17 @@ public class Player {
 		
 	}
 	
+	
 	public void decreaseProbAround(int x, int y){
 	
+		//	1 2 3 7 12 
+		
+		
 		for(int i = 1; i < 6; i++){
 			if(x < (Constants.GRID_SIZE - i)){
 				if(!(grid[x + i][y].getProb() == 0)){
 					grid[x + i][y].setProb((grid[x + i][y].getProb()) - distDecrease(i));
-					if(grid[x + i][y].getProb() < 1)
+					if(grid[x + i][y].getProb() < 1 && !(grid[x + i][y].getShot()))
 						grid[x + i][y].setProb(1);
 				}
 			}
@@ -358,7 +475,7 @@ public class Player {
 			if(x >= i){
 				if(!(grid[x - i][y].getProb() == 0)){
 					grid[x - i][y].setProb((grid[x - i][y].getProb()) - distDecrease(i));
-					if(grid[x - i][y].getProb() < 1)
+					if(grid[x - i][y].getProb() < 1 && !(grid[x - i][y].getShot()))
 						grid[x - i][y].setProb(1);
 				}
 			}
@@ -368,7 +485,7 @@ public class Player {
 			if(y < (Constants.GRID_SIZE - i)){
 				if(!(grid[x][y + i].getProb() == 0)){
 					grid[x][y + i].setProb((grid[x][y + i].getProb()) - distDecrease(i));
-					if(grid[x][y + i].getProb() < 1)
+					if(grid[x][y + i].getProb() < 1 && !(grid[x][y + i].getShot()))
 						grid[x][y + i].setProb(1);
 				}
 			}
@@ -378,11 +495,63 @@ public class Player {
 			if(y >= i){
 				if(!(grid[x][y - i].getProb() == 0)){
 					grid[x][y - i].setProb((grid[x][y - i].getProb()) - distDecrease(i));
-					if(grid[x][y - i].getProb() < 1)
+					if(grid[x][y - i].getProb() < 1 && !(grid[x][y - i].getShot()))
 						grid[x][y - i].setProb(1);
 				}
 			}
 		}
+		
+	}
+	
+	public void decreaseProbAroundBoat(int a, int b){
+	
+		Boat tempBoat = getSunkBoatAtGridSpot(new Coordinate(a,b));
+		int x, y;
+		
+		if(tempBoat != null){
+			List<Coordinate> list = tempBoat.getCoordinatesList();
+			
+			for(Coordinate temp: list){
+				
+				x = temp.getX();
+				y = temp.getY();
+				
+				if(x < 9 ){
+					grid[x + 1][y].setProb((grid[x + 1][y].getProb() / 2));
+					if(grid[x + 1][y].getProb() < 1 && !(grid[x + 1][y].getShot()))
+						grid[x + 1][y].setProb(1);
+				}
+
+				if(x > 0){
+					grid[x - 1][y].setProb((grid[x - 1][y].getProb() / 2));
+					if(grid[x - 1][y].getProb() < 1 && !(grid[x - 1][y].getShot()))
+						grid[x - 1][y].setProb(1);
+				}
+				
+				if(y < 9){
+					grid[x][y + 1].setProb((grid[x][y + 1].getProb() / 2));
+					if(grid[x][y + 1].getProb() < 1 && !(grid[x][y + 1].getShot()))
+						grid[x][y + 1].setProb(1);
+				}
+				
+				if(y > 0){
+					grid[x][y - 1].setProb((grid[x][y - 1].getProb() / 2));
+					if(grid[x][y - 1].getProb() < 1 && !(grid[x][y - 1].getShot()))
+						grid[x][y - 1].setProb(1);
+				}
+			}
+		}
+		
+	}
+	
+	public Boat getSunkBoatAtGridSpot(Coordinate coordinate){
+		
+		for(int i = 0; i < Constants.BOAT_COUNT; i++){
+			if(boats[i].getIsInCoordinateList(coordinate))
+				return boats[i];
+		}
+		
+		return null;
 		
 	}
 	

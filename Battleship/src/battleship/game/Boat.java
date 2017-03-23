@@ -64,4 +64,16 @@ public class Boat {
 		return this.coordinates;
 	}
 	
+	public boolean getIsInCoordinateList(Coordinate coordinate){
+		
+		for(Coordinate temp: this.coordinates){
+			if(coordinate.getX() == temp.getX() && coordinate.getY() == temp.getY()){
+				return true;
+			}
+		}
+		
+		return false;
+		
+	}
+	
 }

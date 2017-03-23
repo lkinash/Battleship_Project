@@ -36,7 +36,34 @@ public class HeatMapPlay implements Play {
 	}
 
 	public void basicWithBoatFinder(Player player) {
-		// TODO Auto-generated method stub
+		
+		int x, y;
+		Coordinate coordinate;
+		
+		while(true){
+			
+			coordinate = player.getHighestProbUnshotGreater();
+			
+			if(coordinate != null){
+				x = coordinate.getX();
+				y = coordinate.getY();
+			}
+			else{
+				x = RandomNumber.getRandom(Constants.GRID_SIZE);
+				y = RandomNumber.getRandom(Constants.GRID_SIZE);
+			}
+				
+			if(!player.hasBeenShot(x, y)){
+				player.shoot(x, y);
+				//player.printGrid(true);
+				player.updateProb(x, y);
+				//player.printProbability();
+			}
+				
+			if(player.getWinner()){
+				break;
+			}	
+		}
 		
 	}
 
@@ -46,7 +73,35 @@ public class HeatMapPlay implements Play {
 	}
 
 	public void basicWithSmartBoatFinder(Player player) {
-		// TODO Auto-generated method stub
+		
+		int x, y;
+		Coordinate coordinate;
+		
+		while(true){
+			
+			coordinate = player.getHighestProbUnshotGreater();
+			
+			if(coordinate != null){
+				x = coordinate.getX();
+				y = coordinate.getY();
+			}
+			else{
+				x = RandomNumber.getRandom(Constants.GRID_SIZE);
+				y = RandomNumber.getRandom(Constants.GRID_SIZE);
+			}
+				
+			if(!player.hasBeenShot(x, y)){
+				player.shoot(x, y);
+				player.addHitToList(x, y);
+				player.printGrid(true);
+				player.updateProbSmart(x, y);
+				player.printProbability();
+			}
+				
+			if(player.getWinner()){
+				break;
+			}	
+		}
 		
 	}
 

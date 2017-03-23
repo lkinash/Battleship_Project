@@ -24,7 +24,7 @@ public class MainGame {
 	public void run(){
 	
 		
-		for(int i = 0; i < 10000; i++){
+		for(int i = 0; i < 1; i++){
 		
 		player = new Player(false);
 		player.createBoats();
@@ -44,10 +44,10 @@ public class MainGame {
 		
 		play = new HeatMapPlay();
 			
-		play.basicPlay(player);
+		//play.basicPlay(player);
 		//play.basicWithBoatFinder(player);
 		//play.basicWithBoatFinderParity(player);
-		//play.basicWithSmartBoatFinder(player);
+		play.basicWithSmartBoatFinder(player);
 		//play.basicWithSmartBoatFinderParity(player);
 			
 		System.out.println(player.getShotCount());	
