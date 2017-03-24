@@ -21,11 +21,8 @@ public class MainGame {
 	
 	}
 	
-	public void run(){
+	public void build(){
 	
-		
-		for(int i = 0; i < 1; i++){
-		
 		player = new Player(false);
 		player.createBoats();
 		player.createGrid();
@@ -34,25 +31,30 @@ public class MainGame {
 		//player.printProbability();
 		
 		
-		//play = new RandomPlay();
+	}
+	
+	public void run(){
+	
+		
+		play = new RandomPlay();
+			
+		//play.basicPlay(player);
+		play.basicWithBoatFinder(player);
+		//play.basicWithBoatFinderParity(player);
+		//play.basicWithSmartBoatFinder(player);
+		//play.basicWithSmartBoatFinderParity(player);
+		
+		//play = new HeatMapPlay();
 			
 		//play.basicPlay(player);
 		//play.basicWithBoatFinder(player);
 		//play.basicWithBoatFinderParity(player);
 		//play.basicWithSmartBoatFinder(player);
 		//play.basicWithSmartBoatFinderParity(player);
-		
-		play = new HeatMapPlay();
-			
-		//play.basicPlay(player);
-		//play.basicWithBoatFinder(player);
-		//play.basicWithBoatFinderParity(player);
-		play.basicWithSmartBoatFinder(player);
-		//play.basicWithSmartBoatFinderParity(player);
 			
 		System.out.println(player.getShotCount());	
 		
-		}
+		
 	}
 
 	

@@ -47,6 +47,9 @@ public class BattleshipWindow extends JFrame{
 		
 		add(mainPanel);
 		
+		MainGame game = new MainGame();
+		game.build();
+		game.run();
 		
 	}
 	
@@ -61,7 +64,7 @@ public class BattleshipWindow extends JFrame{
 		    for(int j = 0; j < Constants.GRID_SIZE; j++){
 		    
 		    	JButton button = new JButton();
-		    	button.setPreferredSize(new Dimension(60, 60));
+		    	button.setPreferredSize(new Dimension(40, 40));
 		    	button.setBackground(buttonColor);
 		    	button.setOpaque(true);
 		    	gamePanel.add(button);
@@ -71,5 +74,6 @@ public class BattleshipWindow extends JFrame{
 	    
 		return gamePanel;
 	}
+	
 	
 }
