@@ -274,6 +274,8 @@ public class RandomPlay implements Play {
 		int x, y;
 		boolean bX, bY;				//boolean x and y 
 		
+		int randomCount = 0;
+		
 		while(true){
 					
 			if(!player.getStackIsEmpty()){
@@ -348,10 +350,13 @@ public class RandomPlay implements Play {
 				x = RandomNumber.getRandom(Constants.GRID_SIZE);
 				y = RandomNumber.getRandom(Constants.GRID_SIZE);
 				
-				if((x + y)%2 == 0){
+				randomCount++;
+				
+				if((x + y)%2 == 0 || randomCount > 50 ){	
 					if(!player.hasBeenShot(x, y)){
 						player.smartShoot(x, y);
 						//player.printGrid(true);
+						randomCount = 0;
 					}
 				
 					if(player.getWinner()){
