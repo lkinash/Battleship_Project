@@ -22,7 +22,7 @@ public class InterfaceMain {
 		
 		MainGame game = new MainGame();
 		
-		for(int i = 0; i < 1; i++){
+		for(int i = 0; i < 25000; i++){
 			game.build();
 			game.run();
 		}

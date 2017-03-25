@@ -77,6 +77,8 @@ public class HeatMapPlay implements Play {
 		int x, y;
 		Coordinate coordinate;
 		
+		int randomCount = 0;
+		
 		while(true){
 			
 			coordinate = player.getHighestProbUnshotGreater();
@@ -89,9 +91,9 @@ public class HeatMapPlay implements Play {
 				if(!player.hasBeenShot(x, y)){
 					player.shoot(x, y);
 					player.addHitToList(x, y);
-					player.printGrid(true);
+					//player.printGrid(true);
 					player.updateProbSmart(x, y);
-					player.printProbability();
+					//player.printProbability();
 				}
 					
 				if(player.getWinner()){
@@ -104,14 +106,17 @@ public class HeatMapPlay implements Play {
 				x = RandomNumber.getRandom(Constants.GRID_SIZE);
 				y = RandomNumber.getRandom(Constants.GRID_SIZE);
 			
-				if((x + y)%2 == 0 ){	
+				randomCount++;
+				
+				if((x + y)%2 == 0 || randomCount > 50 ){	
 					if(!player.hasBeenShot(x, y)){
 						player.shoot(x, y);
 						player.addHitToList(x, y);
-						player.printGrid(true);
+						//player.printGrid(true);
 						player.updateProbSmartAround();
 						player.updateProbSmart(x, y);
-						player.printProbability();
+						//player.printProbability();
+						randomCount = 0;
 					}
 				
 					if(player.getWinner()){

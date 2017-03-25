@@ -425,18 +425,6 @@ public class Player {
 	
 		boolean found = false;
 		
-		
-		System.out.println("Hit List");
-		for(Coordinate temp: hitList){
-			temp.printCoordinate();
-		}
-		
-		System.out.println("Hit Sunk List");
-		for(Coordinate tempSunk: sunkBoatHitList){
-			tempSunk.printCoordinate();
-		}
-	
-		
 		for(Coordinate temp: hitList){
 			
 			found = false;
@@ -446,22 +434,19 @@ public class Player {
 				
 				if(temp.getX() == tempSunk.getX() && temp.getY() == tempSunk.getY()){
 					found = true;
-					//System.out.println("found");
-					//temp.printCoordinate();
+
 				}
 				
 				
 			}
-						
+			
 			if(!found){
 					
 				int s = temp.getX();
 				int t = temp.getY();
 						
 				increaseProbAround(s,t);
-				System.out.println("Increase around " + s + ", " + t);
-			
-				
+
 			}
 		}
 			
