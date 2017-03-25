@@ -36,20 +36,20 @@ public class MainGame {
 	public void run(){
 	
 		
-		play = new RandomPlay();
-			
-		//play.basicPlay(player);
-		play.basicWithBoatFinder(player);
-		//play.basicWithBoatFinderParity(player);
-		//play.basicWithSmartBoatFinder(player);
-		//play.basicWithSmartBoatFinderParity(player);
-		
-		//play = new HeatMapPlay();
+		//play = new RandomPlay();
 			
 		//play.basicPlay(player);
 		//play.basicWithBoatFinder(player);
 		//play.basicWithBoatFinderParity(player);
 		//play.basicWithSmartBoatFinder(player);
+		//play.basicWithSmartBoatFinderParity(player);
+		
+		play = new HeatMapPlay();
+			
+		//play.basicPlay(player);
+		//play.basicWithBoatFinder(player);
+		//play.basicWithBoatFinderParity(player);
+		play.basicWithSmartBoatFinder(player);
 		//play.basicWithSmartBoatFinderParity(player);
 			
 		System.out.println(player.getShotCount());	

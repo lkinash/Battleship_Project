@@ -84,23 +84,42 @@ public class HeatMapPlay implements Play {
 			if(coordinate != null){
 				x = coordinate.getX();
 				y = coordinate.getY();
+				
+				
+				if(!player.hasBeenShot(x, y)){
+					player.shoot(x, y);
+					player.addHitToList(x, y);
+					player.printGrid(true);
+					player.updateProbSmart(x, y);
+					player.printProbability();
+				}
+					
+				if(player.getWinner()){
+					break;
+				}	
+				
 			}
 			else{
+				
 				x = RandomNumber.getRandom(Constants.GRID_SIZE);
 				y = RandomNumber.getRandom(Constants.GRID_SIZE);
-			}
+			
+				if((x + y)%2 == 0 ){	
+					if(!player.hasBeenShot(x, y)){
+						player.shoot(x, y);
+						player.addHitToList(x, y);
+						player.printGrid(true);
+						player.updateProbSmartAround();
+						player.updateProbSmart(x, y);
+						player.printProbability();
+					}
 				
-			if(!player.hasBeenShot(x, y)){
-				player.shoot(x, y);
-				player.addHitToList(x, y);
-				player.printGrid(true);
-				player.updateProbSmart(x, y);
-				player.printProbability();
-			}
+					if(player.getWinner()){
+						break;
+					}	
+				}
 				
-			if(player.getWinner()){
-				break;
-			}	
+			}
 		}
 		
 	}

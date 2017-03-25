@@ -130,6 +130,12 @@ public class Player {
 			if(hitCount == boats[i].getLength() && !boats[i].getSunk()){
 				boats[i].setSunk(true);
 				//System.out.println("Sunk: " + boats[i].getName());
+				List<Coordinate> coordinate = boats[i].getCoordinatesList();
+				
+				for(Coordinate temp: coordinate){
+					sunkBoatHitList.add(temp);
+				}
+				
 				return true;
 			}
 		}
@@ -349,11 +355,13 @@ public class Player {
 				}
 			}
 		}
+
 		
-		//System.out.println("Prob: " + prob);
-		
-		if(prob > 1)
+		if(prob > 1){
+			
+			//System.out.println("Prob: " + prob);
 			return result;
+		}
 		else
 			return null;
 	}
@@ -367,6 +375,7 @@ public class Player {
 			if(getBoatSunk()){
 			
 				decreaseProbAroundBoat(x,y);
+				
 			}
 			else{
 				
@@ -392,6 +401,8 @@ public class Player {
 			if(getBoatSunk()){
 			
 				decreaseProbAroundBoat(x,y);
+			
+				
 			}
 			else{
 				
@@ -405,29 +416,57 @@ public class Player {
 
 		}
 		
-		boolean checker = false;
-			
-		for(Coordinate temp: hitList){
-			for(Coordinate tempSunk: sunkBoatHitList){
-				
-				if(temp.equals(tempSunk)){
-					checker = true;
-				}
-			}
-			
-			if(!checker){
-				
-				int s = temp.getX();
-				int t = temp.getY();
-				
-				if(!grid[s][t].getShot() && (grid[s][t].getProb() != 0)){
-					increaseProbAround(s,t);
-				}
-			}
-		}
+
 		
 		
 	}
+	
+	public void updateProbSmartAround(){
+	
+		boolean found = false;
+		
+		
+		System.out.println("Hit List");
+		for(Coordinate temp: hitList){
+			temp.printCoordinate();
+		}
+		
+		System.out.println("Hit Sunk List");
+		for(Coordinate tempSunk: sunkBoatHitList){
+			tempSunk.printCoordinate();
+		}
+	
+		
+		for(Coordinate temp: hitList){
+			
+			found = false;
+			
+			for(Coordinate tempSunk: sunkBoatHitList){
+				
+				
+				if(temp.getX() == tempSunk.getX() && temp.getY() == tempSunk.getY()){
+					found = true;
+					//System.out.println("found");
+					//temp.printCoordinate();
+				}
+				
+				
+			}
+						
+			if(!found){
+					
+				int s = temp.getX();
+				int t = temp.getY();
+						
+				increaseProbAround(s,t);
+				System.out.println("Increase around " + s + ", " + t);
+			
+				
+			}
+		}
+			
+	}
+
 	
 	public void addHitToList(int x, int y){
 		if(grid[x][y].getShot() && grid[x][y].getBoat()){
