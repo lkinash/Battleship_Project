@@ -8,7 +8,7 @@ public class InterfaceMain {
 
 	public static void main(String[] args)
 	{
-		/*
+		
 		BattleshipWindow window = new BattleshipWindow();				//create a window object
 		
 		window.runGame();				//add the items to the window
@@ -18,14 +18,17 @@ public class InterfaceMain {
 		window.setVisible(true);				//make it visable
 		
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		//add a close option
-			*/
+			
 		
-		MainGame game = new MainGame();
 		
-		for(int i = 0; i < 25000; i++){
-			game.build();
-			game.run();
-		}
+		
+		//MainGame game = new MainGame();
+		
+		//for(int i = 0; i < 25000; i++){
+			//game.build();
+			//game.run();
+		//}
+		
 	}
 	
 	

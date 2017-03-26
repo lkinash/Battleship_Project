@@ -2,7 +2,7 @@ package battleship.game;
 
 public interface Play {
 
-	public void basicPlay(Player player);
+	public boolean basicPlay(Player player);
 	
 	public void basicWithBoatFinder(Player player);
 	

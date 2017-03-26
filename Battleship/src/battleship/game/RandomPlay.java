@@ -10,7 +10,7 @@ public class RandomPlay implements Play {
 		
 	}
 	
-	public void basicPlay(Player player){
+	public boolean basicPlay(Player player){
 			
 		int x, y;
 		
@@ -22,10 +22,11 @@ public class RandomPlay implements Play {
 			if(!player.hasBeenShot(x, y)){
 				player.shoot(x, y);
 				//player.printGrid(true);
+				return false;
 			}
 				
 			if(player.getWinner()){
-				break;
+				return true;
 			}	
 		}
 	}

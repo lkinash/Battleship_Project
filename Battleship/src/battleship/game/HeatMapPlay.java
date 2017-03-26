@@ -10,7 +10,7 @@ public class HeatMapPlay implements Play {
 		
 	}
 	
-	public void basicPlay(Player player) {
+	public boolean basicPlay(Player player) {
 		
 		int x, y;
 		Coordinate coordinate;
@@ -33,6 +33,7 @@ public class HeatMapPlay implements Play {
 			}	
 		}
 		
+		return false;
 	}
 
 	public void basicWithBoatFinder(Player player) {

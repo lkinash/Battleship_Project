@@ -9,6 +9,7 @@ import battleship.service.Constants;
 import battleship.service.Coordinate;
 import battleship.service.GridProb;
 import battleship.service.RandomNumber;
+import battleship.service.Status;
 
 public class Player {
 
@@ -180,11 +181,11 @@ public class Player {
 		
 		int x, y;
 		
-		tryPlacingBoatsX(3, 5, 0);
-		tryPlacingBoatsY(9, 2, 1);
-		tryPlacingBoatsY(0, 5, 2);
-		tryPlacingBoatsY(1, 3, 3);
-		tryPlacingBoatsY(3, 8, 4);
+		tryPlacingBoatsY(0, 3, 0);
+		tryPlacingBoatsY(9, 3, 1);
+		tryPlacingBoatsX(4, 4, 2);
+		tryPlacingBoatsX(3, 7, 3);
+		tryPlacingBoatsX(6, 8, 4);
 		
 		
 	}
@@ -594,6 +595,28 @@ public class Player {
 		else
 			return 0;
 		
+	}
+	
+	public Status getSquareStatus(int x, int y){
+		
+		if(grid[x][y].getBoat()){
+		
+			if(grid[x][y].getShot()){
+				return Status.HIT;
+			}
+			else{
+				return Status.BOAT;
+			}
+		}
+		else{
+			
+			if(grid[x][y].getShot()){
+				return Status.MISS;
+			}
+			else{
+				return Status.EMPTY;
+			}
+		}
 	}
 	
 	public int getShotCount(){
