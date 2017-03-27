@@ -10,6 +10,14 @@ public class HeatMapPlay implements Play {
 		
 	}
 	
+	public boolean checkWinner(Player player){
+		if(player.getWinner()){
+			return true;
+		}
+		else 
+			return false;
+	}
+	
 	public boolean basicPlay(Player player) {
 		
 		int x, y;
@@ -26,17 +34,16 @@ public class HeatMapPlay implements Play {
 				//player.printGrid(true);
 				player.updateProb(x, y);
 				//player.printProbability();
+				return false;
 			}
 				
 			if(player.getWinner()){
-				break;
+				return true;
 			}	
 		}
-		
-		return false;
 	}
 
-	public void basicWithBoatFinder(Player player) {
+	public boolean basicWithBoatFinder(Player player) {
 		
 		int x, y;
 		Coordinate coordinate;
@@ -59,21 +66,24 @@ public class HeatMapPlay implements Play {
 				//player.printGrid(true);
 				player.updateProb(x, y);
 				//player.printProbability();
+				return false;
 			}
 				
 			if(player.getWinner()){
-				break;
+				return true;
+				
 			}	
 		}
 		
 	}
 
-	public void basicWithBoatFinderParity(Player player) {
+	public boolean basicWithBoatFinderParity(Player player) {
 		// TODO Auto-generated method stub
+		return false;
 		
 	}
 
-	public void basicWithSmartBoatFinder(Player player) {
+	public boolean basicWithSmartBoatFinder(Player player) {
 		
 		int x, y;
 		Coordinate coordinate;
@@ -81,6 +91,7 @@ public class HeatMapPlay implements Play {
 		int randomCount = 0;
 		
 		while(true){
+			
 			
 			coordinate = player.getHighestProbUnshotGreater();
 			
@@ -95,10 +106,11 @@ public class HeatMapPlay implements Play {
 					//player.printGrid(true);
 					player.updateProbSmart(x, y);
 					//player.printProbability();
+					return false;
 				}
 					
 				if(player.getWinner()){
-					break;
+					return true;
 				}	
 				
 			}
@@ -118,10 +130,11 @@ public class HeatMapPlay implements Play {
 						player.updateProbSmart(x, y);
 						//player.printProbability();
 						randomCount = 0;
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
 				
@@ -130,9 +143,10 @@ public class HeatMapPlay implements Play {
 		
 	}
 
-	public void basicWithSmartBoatFinderParity(Player player) {
+	public boolean basicWithSmartBoatFinderParity(Player player) {
 		// TODO Auto-generated method stub
 		
+		return false;
 	}
 	
 }

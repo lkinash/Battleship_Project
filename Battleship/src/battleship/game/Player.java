@@ -354,6 +354,12 @@ public class Player {
 					result = new Coordinate(i,j);
 					prob = grid[i][j].getProb();
 				}
+				if(grid[i][j].getProb() == prob){
+					if(RandomNumber.getRandom(1) == 1){
+						result = new Coordinate(i,j);
+						prob = grid[i][j].getProb();
+					}
+				}
 			}
 		}
 
@@ -462,20 +468,46 @@ public class Player {
 	
 	public void increaseProbAround(int x, int y){
 		
+		int var = 2;
+		
 		if(x < 9 ){
-			grid[x + 1][y].setProb(2 * (grid[x + 1][y].getProb()));
+			if(grid[x + 1][y].getProb() < 10){
+				var = 3;
+			}
+			else{
+				var = 2;
+			}
+			grid[x + 1][y].setProb(var * (grid[x + 1][y].getProb()));
 		}
 
 		if(x > 0){
-			grid[x - 1][y].setProb(2 * (grid[x - 1][y].getProb()));
+			if(grid[x - 1][y].getProb() < 10){
+				var = 3;
+			}
+			else{
+				var = 2;
+			}
+			grid[x - 1][y].setProb(var * (grid[x - 1][y].getProb()));
 		}
 		
 		if(y < 9){
-			grid[x][y + 1].setProb(2 * (grid[x][y + 1].getProb()));
+			if(grid[x][y + 1].getProb() < 10){
+				var = 3;
+			}
+			else{
+				var = 2;
+			}
+			grid[x][y + 1].setProb(var * (grid[x][y + 1].getProb()));
 		}
 		
 		if(y > 0){
-			grid[x][y - 1].setProb(2 * (grid[x][y - 1].getProb()));
+			if(grid[x][y - 1].getProb() < 10){
+				var = 3;
+			}
+			else{
+				var = 2;
+			}
+			grid[x][y - 1].setProb(var * (grid[x][y - 1].getProb()));
 		}
 		
 	}
@@ -629,6 +661,10 @@ public class Player {
 	
 	public Coordinate getStackTop(){
 		return hits.pop();
+	}
+	
+	public void pushStackTop(Coordinate coordinate){
+		hits.push(coordinate);
 	}
 	
 }

@@ -8,12 +8,13 @@ public class InterfaceMain {
 
 	public static void main(String[] args)
 	{
+	
 		
 		BattleshipWindow window = new BattleshipWindow();				//create a window object
 		
 		window.runGame();				//add the items to the window
 		
-		window.setSize(800, 1000);			//set the frame size
+		window.setSize(650, 800);			//set the frame size
 		
 		window.setVisible(true);				//make it visable
 		
@@ -21,14 +22,14 @@ public class InterfaceMain {
 			
 		
 		
+		/*
+		MainGame game = new MainGame();
 		
-		//MainGame game = new MainGame();
-		
-		//for(int i = 0; i < 25000; i++){
-			//game.build();
-			//game.run();
-		//}
-		
+		for(int i = 0; i < 25000; i++){
+			game.build();
+			game.run();
+		}
+		*/
 	}
 	
 	

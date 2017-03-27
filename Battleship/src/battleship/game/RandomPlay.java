@@ -10,6 +10,14 @@ public class RandomPlay implements Play {
 		
 	}
 	
+	public boolean checkWinner(Player player){
+		if(player.getWinner()){
+			return true;
+		}
+		else 
+			return false;
+	}
+	
 	public boolean basicPlay(Player player){
 			
 		int x, y;
@@ -31,7 +39,7 @@ public class RandomPlay implements Play {
 		}
 	}
 	
-	public void basicWithBoatFinder(Player player){
+	public boolean basicWithBoatFinder(Player player){
 		
 		int x, y;
 		
@@ -47,10 +55,12 @@ public class RandomPlay implements Play {
 					if(!player.hasBeenShot(x + 1, y)){			//x + 1
 						player.shoot(x + 1 , y);
 						//player.printGrid(true);
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
 				
@@ -58,10 +68,12 @@ public class RandomPlay implements Play {
 					if(!player.hasBeenShot(x , y + 1)){			//y + 1
 						player.shoot(x , y + 1);
 						//player.printGrid(true);
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
 				
@@ -69,10 +81,12 @@ public class RandomPlay implements Play {
 					if(!player.hasBeenShot(x - 1, y)){				//x - 1
 						player.shoot(x - 1 , y);
 						//player.printGrid(true);
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
 				
@@ -80,10 +94,12 @@ public class RandomPlay implements Play {
 					if(!player.hasBeenShot(x , y - 1)){			//y - 1
 						player.shoot(x , y - 1);
 						//player.printGrid(true);
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
 			}
@@ -94,17 +110,18 @@ public class RandomPlay implements Play {
 				if(!player.hasBeenShot(x, y)){
 					player.shoot(x, y);
 					//player.printGrid(true);
+					return false;
 				}
 				
 				if(player.getWinner()){
-					break;
+					return true;
 				}	
 			}
 		}
 	}
 	
 	
-	public void basicWithBoatFinderParity(Player player){
+	public boolean basicWithBoatFinderParity(Player player){
 		
 		int x, y;
 		
@@ -120,10 +137,12 @@ public class RandomPlay implements Play {
 					if(!player.hasBeenShot(x + 1, y)){			//x + 1
 						player.shoot(x + 1 , y);
 						//player.printGrid(true);
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
 				
@@ -131,10 +150,12 @@ public class RandomPlay implements Play {
 					if(!player.hasBeenShot(x , y + 1)){			//y + 1
 						player.shoot(x , y + 1);
 						//player.printGrid(true);
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
 				
@@ -142,10 +163,12 @@ public class RandomPlay implements Play {
 					if(!player.hasBeenShot(x - 1, y)){				//x - 1
 						player.shoot(x - 1 , y);
 						//player.printGrid(true);
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
 				
@@ -153,12 +176,16 @@ public class RandomPlay implements Play {
 					if(!player.hasBeenShot(x , y - 1)){			//y - 1
 						player.shoot(x , y - 1);
 						//player.printGrid(true);
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
+				
+				
 			}
 			else{
 				x = RandomNumber.getRandom(Constants.GRID_SIZE);
@@ -168,10 +195,11 @@ public class RandomPlay implements Play {
 					if(!player.hasBeenShot(x, y)){
 						player.shoot(x, y);
 						//player.printGrid(true);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
 			}
@@ -179,7 +207,7 @@ public class RandomPlay implements Play {
 	}
 	
 	
-	public void basicWithSmartBoatFinder(Player player){
+	public boolean basicWithSmartBoatFinder(Player player){
 		
 		int x, y;
 		boolean bX, bY;				//boolean x and y 
@@ -202,10 +230,12 @@ public class RandomPlay implements Play {
 								bY = false;
 						}	
 						//player.printGrid(true);
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
 				
@@ -217,10 +247,12 @@ public class RandomPlay implements Play {
 						}	
 
 						//player.printGrid(true);
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
 				
@@ -232,10 +264,12 @@ public class RandomPlay implements Play {
 						}	
 							
 						//player.printGrid(true);
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
 			
@@ -246,12 +280,16 @@ public class RandomPlay implements Play {
 							if((!player.isHit(new Coordinate(x + 1 ,y ))) && (!player.isHit(new Coordinate(x - 1, y ))))
 								bX = false;
 						}	
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
+				
+				 
 			}
 			else{
 				x = RandomNumber.getRandom(Constants.GRID_SIZE);
@@ -260,17 +298,18 @@ public class RandomPlay implements Play {
 				if(!player.hasBeenShot(x, y)){
 					player.smartShoot(x, y);
 					//player.printGrid(true);
+					return false;
 				}
 				
 				if(player.getWinner()){
-					break;
+					return true;
 				}	
 			}
 		}
 	}		
 	
 
-	public void basicWithSmartBoatFinderParity(Player player){
+	public boolean basicWithSmartBoatFinderParity(Player player){
 	
 		int x, y;
 		boolean bX, bY;				//boolean x and y 
@@ -295,10 +334,12 @@ public class RandomPlay implements Play {
 								bY = false;
 						}	
 						//player.printGrid(true);
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
 				
@@ -310,10 +351,12 @@ public class RandomPlay implements Play {
 						}	
 
 						//player.printGrid(true);
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
 				
@@ -325,10 +368,12 @@ public class RandomPlay implements Play {
 						}	
 							
 						//player.printGrid(true);
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
 			
@@ -339,12 +384,17 @@ public class RandomPlay implements Play {
 							if((!player.isHit(new Coordinate(x + 1 ,y ))) && (!player.isHit(new Coordinate(x - 1, y ))))
 								bX = false;
 						}	
+						player.pushStackTop(top);
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}	
 				}
+				
+				
+			
 			}
 			
 			else{
@@ -358,10 +408,11 @@ public class RandomPlay implements Play {
 						player.smartShoot(x, y);
 						//player.printGrid(true);
 						randomCount = 0;
+						return false;
 					}
 				
 					if(player.getWinner()){
-						break;
+						return true;
 					}		
 				}
 			}

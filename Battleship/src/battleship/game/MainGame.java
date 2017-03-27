@@ -3,6 +3,7 @@ package battleship.game;
 import battleship.service.Constants;
 import battleship.service.Coordinate;
 import battleship.service.RandomNumber;
+import battleship.service.SimType;
 import battleship.service.Status;
 
 public class MainGame {
@@ -22,7 +23,7 @@ public class MainGame {
 	
 	}
 	
-	public void build(){
+	public void build(boolean type){
 	
 		player = new Player(false);
 		player.createBoats();
@@ -32,32 +33,47 @@ public class MainGame {
 		//player.printGrid(true);
 		//player.printProbability();
 		
-		play = new RandomPlay();
-		
+		if(type){
+			play = new RandomPlay();
+		}
+		else{
+			play = new HeatMapPlay();
+		}
 		
 	}
 	
-	public boolean run(){
+	public boolean run(SimType type){
 	
-		return play.basicPlay(player);
+		
+		if(type.equals(SimType.RandomBasicPlay)){
+			play.basicPlay(player);
+		}
+		else if(type.equals(SimType.RandomBasicWithBoatFinder)){
+			play.basicWithBoatFinder(player);
+		}
+		else if(type.equals(SimType.RandomBasicWithBoatFinderParity)){
+			play.basicWithBoatFinderParity(player);
+		}
+		else if(type.equals(SimType.RandomBasicWithSmartBoatFinder)){
+			play.basicWithSmartBoatFinder(player);
+		}
+		else if(type.equals(SimType.RandomBasicWithSmartBoatFinderParity)){
+			play.basicWithSmartBoatFinderParity(player);
+		}
+		
+		else if(type.equals(SimType.ProbBasicPlay)){
+			play.basicPlay(player);
+		}
+		else if(type.equals(SimType.ProbBasicWithBoatFinder)){
+			play.basicWithBoatFinder(player);
+		}
+		else if(type.equals(SimType.ProbBasicWithSmartBoatFinder)){
+			play.basicWithSmartBoatFinder(player);
+		}
+			
+		return play.checkWinner(player);
+		
 
-		
-		//play.basicWithBoatFinder(player);
-		//play.basicWithBoatFinderParity(player);
-		//play.basicWithSmartBoatFinder(player);
-		//play.basicWithSmartBoatFinderParity(player);
-		
-		//play = new HeatMapPlay();
-			
-		//play.basicPlay(player);
-		//play.basicWithBoatFinder(player);
-		//play.basicWithBoatFinderParity(player);
-		//play.basicWithSmartBoatFinder(player);
-		//play.basicWithSmartBoatFinderParity(player);
-			
-		//System.out.println(player.getShotCount());	
-		
-		
 	}
 	
 	
