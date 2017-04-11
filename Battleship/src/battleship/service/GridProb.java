@@ -1,16 +1,19 @@
 package battleship.service;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Lindsey
+ * The Class GridProb.
  *
+ * @author Lindsey
  */
 public class GridProb {
 
 	/**
-	 * Gets the starting probability
-	 * @param x
-	 * @param y
-	 * @return
+	 * Gets the starting probability.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @return the default square prob
 	 */
 	public static int getDefaultSquareProb(int x, int y){
 		

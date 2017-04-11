@@ -4,12 +4,19 @@ import javax.swing.JFrame;
 
 import battleship.game.MainGame;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Lindsey
+ * The Class InterfaceMain.
  *
+ * @author Lindsey
  */
 public class InterfaceMain {
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args)
 	{
 	

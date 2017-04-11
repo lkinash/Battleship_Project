@@ -4,12 +4,17 @@ import battleship.service.Constants;
 import battleship.service.Coordinate;
 import battleship.service.RandomNumber;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Lindsey
+ * The Class RandomPlay.
  *
+ * @author Lindsey
  */
 public class RandomPlay implements Play {
 
+	/**
+	 * Instantiates a new random play.
+	 */
 	public RandomPlay(){
 		
 	}

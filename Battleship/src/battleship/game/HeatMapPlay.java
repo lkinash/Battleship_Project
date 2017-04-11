@@ -4,12 +4,17 @@ import battleship.service.Constants;
 import battleship.service.Coordinate;
 import battleship.service.RandomNumber;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Lindsey
+ * The Class HeatMapPlay.
  *
+ * @author Lindsey
  */
 public class HeatMapPlay implements Play {
 
+	/**
+	 * Instantiates a new heat map play.
+	 */
 	public HeatMapPlay(){
 		
 	}

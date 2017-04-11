@@ -24,36 +24,58 @@ import battleship.service.Constants;
 import battleship.service.SimType;
 import battleship.service.Status;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Lindsey
+ * The Class BattleshipWindow.
  *
+ * @author Lindsey
  */
 public class BattleshipWindow extends JFrame{
 
+	/** The main panel. */
 	JPanel mainPanel = new JPanel();
+	
+	/** The main label. */
 	JLabel mainLabel = new JLabel("                                      Battleship                                    ");					//add a number of panels and frames for organization
 
+	/** The top panel. */
 	JPanel topPanel;
+	
+	/** The lower panel. */
 	JPanel lowerPanel; 
 	
+	/** The timer. */
 	Timer timer;
 	
+	/** The color. */
 	Color color = new Color(35,128,235);
+	
+	/** The button color. */
 	Color buttonColor = new Color(10,28,235);
 	
+	/** The empty. */
 	Color empty = Color.WHITE;
+	
+	/** The hit. */
 	Color hit = Color.RED;
+	
+	/** The boat. */
 	Color boat = Color.GRAY;
+	
+	/** The miss. */
 	Color miss = Color.CYAN;
 	
+	/** The game. */
 	MainGame game;
 	
+	/** The delay. */
 	int delay;
 	
+	/** The win. */
 	boolean win;
 	
 	/**
-	 * 
+	 * Run game.
 	 */
 	public void runGame(){
 		
@@ -121,7 +143,9 @@ public class BattleshipWindow extends JFrame{
 	}
 	
 	/**
-	 * @return
+	 * Game panel.
+	 *
+	 * @return the j panel
 	 */
 	public JPanel gamePanel(){
 	
@@ -166,8 +190,15 @@ public class BattleshipWindow extends JFrame{
 	
 
 	/**
-	 * @author Lindsey
+	 * The listener interface for receiving random events.
+	 * The class that is interested in processing a random
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addrandomListener<code> method. When
+	 * the random event occurs, that object's appropriate
+	 * method is invoked.
 	 *
+	 * @author Lindsey
 	 */
 	class randomListener implements ActionListener{					
 		
@@ -207,8 +238,15 @@ public class BattleshipWindow extends JFrame{
 	}
 	
 	/**
-	 * @author Lindsey
+	 * The listener interface for receiving randomBoatFinder events.
+	 * The class that is interested in processing a randomBoatFinder
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addrandomBoatFinderListener<code> method. When
+	 * the randomBoatFinder event occurs, that object's appropriate
+	 * method is invoked.
 	 *
+	 * @author Lindsey
 	 */
 	class randomBoatFinderListener implements ActionListener{					
 		
@@ -248,8 +286,15 @@ public class BattleshipWindow extends JFrame{
 	}
 	
 	/**
-	 * @author Lindsey
+	 * The listener interface for receiving randomBoatFinderParity events.
+	 * The class that is interested in processing a randomBoatFinderParity
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addrandomBoatFinderParityListener<code> method. When
+	 * the randomBoatFinderParity event occurs, that object's appropriate
+	 * method is invoked.
 	 *
+	 * @author Lindsey
 	 */
 	class randomBoatFinderParityListener implements ActionListener{					
 		
@@ -289,8 +334,15 @@ public class BattleshipWindow extends JFrame{
 	}
 	
 	/**
-	 * @author Lindsey
+	 * The listener interface for receiving randomSmartFinder events.
+	 * The class that is interested in processing a randomSmartFinder
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addrandomSmartFinderListener<code> method. When
+	 * the randomSmartFinder event occurs, that object's appropriate
+	 * method is invoked.
 	 *
+	 * @author Lindsey
 	 */
 	class randomSmartFinderListener implements ActionListener{					
 		
@@ -330,8 +382,15 @@ public class BattleshipWindow extends JFrame{
 	}
 	
 	/**
-	 * @author Lindsey
+	 * The listener interface for receiving randomSmartFinderParity events.
+	 * The class that is interested in processing a randomSmartFinderParity
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addrandomSmartFinderParityListener<code> method. When
+	 * the randomSmartFinderParity event occurs, that object's appropriate
+	 * method is invoked.
 	 *
+	 * @author Lindsey
 	 */
 	class randomSmartFinderParityListener implements ActionListener{					
 		
@@ -372,8 +431,15 @@ public class BattleshipWindow extends JFrame{
 	}
 	
 	/**
-	 * @author Lindsey
+	 * The listener interface for receiving prob events.
+	 * The class that is interested in processing a prob
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addprobListener<code> method. When
+	 * the prob event occurs, that object's appropriate
+	 * method is invoked.
 	 *
+	 * @author Lindsey
 	 */
 	class probListener implements ActionListener{					
 		
@@ -414,8 +480,15 @@ public class BattleshipWindow extends JFrame{
 	}
 	
 	/**
-	 * @author Lindsey
+	 * The listener interface for receiving probBoatFinder events.
+	 * The class that is interested in processing a probBoatFinder
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addprobBoatFinderListener<code> method. When
+	 * the probBoatFinder event occurs, that object's appropriate
+	 * method is invoked.
 	 *
+	 * @author Lindsey
 	 */
 	class probBoatFinderListener implements ActionListener{					
 		
@@ -456,8 +529,15 @@ public class BattleshipWindow extends JFrame{
 	}
 	
 	/**
-	 * @author Lindsey
+	 * The listener interface for receiving probSmartFinderParity events.
+	 * The class that is interested in processing a probSmartFinderParity
+	 * event implements this interface, and the object created
+	 * with that class is registered with a component using the
+	 * component's <code>addprobSmartFinderParityListener<code> method. When
+	 * the probSmartFinderParity event occurs, that object's appropriate
+	 * method is invoked.
 	 *
+	 * @author Lindsey
 	 */
 	class probSmartFinderParityListener implements ActionListener{					
 		
@@ -499,8 +579,9 @@ public class BattleshipWindow extends JFrame{
 	
 			
 	/**
-	 * Runs the game for the type passed in
-	 * @param type
+	 * Runs the game for the type passed in.
+	 *
+	 * @param type the type
 	 */
 	public void runGamePlay(SimType type){
 		

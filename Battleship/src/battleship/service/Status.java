@@ -1,8 +1,10 @@
 package battleship.service;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Lindsey
+ * The Enum Status.
  *
+ * @author Lindsey
  */
 /**
  * @author Lindsey
@@ -10,24 +12,16 @@ package battleship.service;
  */
 public enum Status {
 			
-	/**
-	 * 	Empty square
-	 */
+	/** 	Empty square. */
 	EMPTY,
 	
-	/**
-	 * 		square contains an un-hit boat
-	 */
+	/** 		square contains an un-hit boat. */
 	BOAT,
 	
-	/**
-	 * 		square was shot and is a miss
-	 */
+	/** 		square was shot and is a miss. */
 	MISS,
 	
-	/**
-	 *		Square contains a hit 
-	 */
+	/** 		Square contains a hit. */
 	HIT,
 			
 }

@@ -11,31 +11,47 @@ import battleship.service.GridProb;
 import battleship.service.RandomNumber;
 import battleship.service.Status;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Lindsey
+ * The Class Player.
  *
+ * @author Lindsey
  */
 public class Player {
 
+	/** The is human. */
 	private boolean isHuman;
 	
+	/** The winner. */
 	private boolean winner;
 	
+	/** The shot count. */
 	private int shotCount;
 	
+	/** The hit count. */
 	private int hitCount;
 	
+	/** The boats. */
 	private Boat[] boats;
 	
+	/** The grid. */
 	private GridSquare[][] grid;
 	
+	/** The hits. */
 	private Stack<Coordinate> hits;
 	
+	/** The hit list. */
 	private List<Coordinate> hitList;
 	
+	/** The sunk boat hit list. */
 	private List<Coordinate> sunkBoatHitList;
 	
 	
+	/**
+	 * Instantiates a new player.
+	 *
+	 * @param humanPlayer the human player
+	 */
 	public Player(boolean humanPlayer){
 		
 		this.isHuman = humanPlayer;
@@ -60,6 +76,9 @@ public class Player {
 
 	}
 	
+	/**
+	 * Creates the five boats that are default.
+	 */
 	public void createBoats(){
 		
 		boats[0] = new Boat(5, "Carrier");
@@ -70,6 +89,9 @@ public class Player {
 		
 	}
 	
+	/**
+	 * Creates the game grid.
+	 */
 	public void createGrid(){
 		
 		for(int i = 0; i < Constants.GRID_SIZE; i++)
@@ -78,6 +100,11 @@ public class Player {
 				
 	}
 	
+	/**
+	 * prints teh grid nicely in command line.
+	 *
+	 * @param hits the hits
+	 */
 	public void printGrid(boolean hits){
 		
 		System.out.println("----------");
@@ -102,6 +129,10 @@ public class Player {
 		System.out.println("----------");
 	}
 	
+	
+	/**
+	 * 	Prints the probability values for each square.
+	 */
 	public void printProbability(){
 		
 		System.out.println("----------");
@@ -118,6 +149,12 @@ public class Player {
 		System.out.println("----------");
 	}
 	
+	
+	/**
+	 * Tests if a boat is sunk.
+	 *
+	 * @return the boat sunk
+	 */
 	public boolean getBoatSunk(){
 		
 		for(int i = 0; i < Constants.BOAT_COUNT; i++){
@@ -148,6 +185,13 @@ public class Player {
 		return false;
 	}
 	
+	
+	/**
+	 * Tests a sqaure fr a hit .
+	 *
+	 * @param coordinate the coordinate
+	 * @return true, if is hit
+	 */
 	public boolean isHit(Coordinate coordinate){
 		
 		if(coordinate.getX() < 0 || coordinate.getX() > 9 || coordinate.getY() < 0 || coordinate.getY() > 9){
@@ -160,6 +204,10 @@ public class Player {
 		
 	}
 	
+	
+	/**
+	 * 	Places a boat at random.
+	 */
 	public void placeBoats(){
 		
 		int x, y;
@@ -181,10 +229,12 @@ public class Player {
 		}
 	}
 	
+	
+	/**
+	 * 	Allows static placement of the boats.
+	 */
 	public void placeBoatsSet(){
-		
-		int x, y;
-		
+
 		tryPlacingBoatsY(0, 3, 0);
 		tryPlacingBoatsY(9, 3, 1);
 		tryPlacingBoatsX(4, 4, 2);
@@ -194,6 +244,14 @@ public class Player {
 		
 	}
 	
+	/**
+	 * TRies to place the boats, testing for an overlap .
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @param i the i
+	 * @return true, if successful
+	 */
 	private boolean tryPlacingBoatsY(int x, int y, int i){
 		
 		boolean placeable = true;
@@ -218,6 +276,14 @@ public class Player {
 		return false;
 	}
 	
+	/**
+	 * TRies to place the boats, testing for an overlap .
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @param i the i
+	 * @return true, if successful
+	 */
 	private boolean tryPlacingBoatsX(int x, int y, int i){
 		
 		boolean placeable = true;
@@ -243,10 +309,24 @@ public class Player {
 	}
 	
 
+	/**
+	 * Test if a square has been shot at .
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @return true, if successful
+	 */
 	public boolean hasBeenShot(int x, int y){
 		return grid[x][y].getShot();
 	}
 	
+	/**
+	 * Shoots at a square.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @return true, if successful
+	 */
 	public boolean shoot(int x, int y){
 		
 		grid[x][y].setShot(true);
@@ -263,6 +343,13 @@ public class Player {
 	}
 	
 	
+	/**
+	 * Shoots and updates the stack for smart shoot.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @return true, if successful
+	 */
 	public boolean smartShoot(int x, int y){
 		
 		grid[x][y].setShot(true);
@@ -282,6 +369,12 @@ public class Player {
 		
 	}
 	
+	/**
+	 * Returns the just sunk boat.
+	 *
+	 * @param coordinate the coordinate
+	 * @return true, if successful
+	 */
 	public boolean coordinateFromSunkBoat(Coordinate coordinate){
 	
 		for(int i = 0; i < Constants.BOAT_COUNT; i++){
@@ -306,6 +399,11 @@ public class Player {
 		return false;
 	}
 	
+	/**
+	 * Adds a new sunk boat to list of sunk boats.
+	 *
+	 * @param i the i
+	 */
 	public void addToSunkBoatList(int i){
 		
 		if(boats[i].getSunk()){
@@ -319,6 +417,11 @@ public class Player {
 		}
 	}
 	
+	/**
+	 * Tests if a player has won.
+	 *
+	 * @return the winner
+	 */
 	public boolean getWinner(){
 		if(hitCount > 16){
 			this.winner = true;
@@ -330,6 +433,12 @@ public class Player {
 		return this.winner;
 	}
 	
+	
+	/**
+	 * Finds the highest probability unshot square to shoot at next .
+	 *
+	 * @return the highest prob unshot
+	 */
 	public Coordinate getHighestProbUnshot(){
 		
 		int prob = 0;
@@ -347,6 +456,12 @@ public class Player {
 		return result;
 	}
 	
+	
+	/**
+	 * Finds the highest probability unshot square with a smart adjustment.
+	 *
+	 * @return the highest prob unshot greater
+	 */
 	public Coordinate getHighestProbUnshotGreater(){
 		
 		int prob = 0;
@@ -378,6 +493,12 @@ public class Player {
 	}
 	
 	
+	/**
+	 * Updates squares probability .
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void updateProb(int x, int y){
 		
 		grid[x][y].setProb(0);
@@ -404,6 +525,12 @@ public class Player {
 	}
 	
 	
+	/**
+	 * The update probability for the smart option.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void updateProbSmart(int x, int y){
 		
 		grid[x][y].setProb(0);
@@ -432,6 +559,9 @@ public class Player {
 		
 	}
 	
+	/**
+	 * Updates probability around a square.
+	 */
 	public void updateProbSmartAround(){
 	
 		boolean found = false;
@@ -464,12 +594,24 @@ public class Player {
 	}
 
 	
+	/**
+	 * Add to the list of hits.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void addHitToList(int x, int y){
 		if(grid[x][y].getShot() && grid[x][y].getBoat()){
 			hitList.add(new Coordinate(x, y));
 		}
 	}
 	
+	/**
+	 * adds probability value of sqaures around.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void increaseProbAround(int x, int y){
 		
 		int var = 2;
@@ -517,6 +659,12 @@ public class Player {
 	}
 	
 	
+	/**
+	 * decreases probability value of squares around.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void decreaseProbAround(int x, int y){
 	
 		//	1 2 3 7 12 
@@ -564,6 +712,12 @@ public class Player {
 		
 	}
 	
+	/**
+	 * Changes probability around a sunk boat.
+	 *
+	 * @param a the a
+	 * @param b the b
+	 */
 	public void decreaseProbAroundBoat(int a, int b){
 	
 		Boat tempBoat = getSunkBoatAtGridSpot(new Coordinate(a,b));
@@ -605,6 +759,12 @@ public class Player {
 		
 	}
 	
+	/**
+	 * Tests which boat is sunk at a spot.
+	 *
+	 * @param coordinate the coordinate
+	 * @return the sunk boat at grid spot
+	 */
 	public Boat getSunkBoatAtGridSpot(Coordinate coordinate){
 		
 		for(int i = 0; i < Constants.BOAT_COUNT; i++){
@@ -616,6 +776,12 @@ public class Player {
 		
 	}
 	
+	/**
+	 * Get the amount of probability to decrease based on the distance from the miss.
+	 *
+	 * @param i the i
+	 * @return the int
+	 */
 	public int distDecrease(int i){
 		
 		if(i == 1)
@@ -633,6 +799,13 @@ public class Player {
 		
 	}
 	
+	/**
+	 * Tests if a square is hit or a miss or unshot.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @return the square status
+	 */
 	public Status getSquareStatus(int x, int y){
 		
 		if(grid[x][y].getBoat()){
@@ -655,18 +828,38 @@ public class Player {
 		}
 	}
 	
+	/**
+	 * Gets the shot count.
+	 *
+	 * @return the shot count
+	 */
 	public int getShotCount(){
 		return this.shotCount;
 	}
 	
+	/**
+	 * Gets the stack is empty.
+	 *
+	 * @return the stack is empty
+	 */
 	public boolean getStackIsEmpty(){
 		return hits.isEmpty();
 	}
 	
+	/**
+	 * Gets the stack top.
+	 *
+	 * @return the stack top
+	 */
 	public Coordinate getStackTop(){
 		return hits.pop();
 	}
 	
+	/**
+	 * Push stack top.
+	 *
+	 * @param coordinate the coordinate
+	 */
 	public void pushStackTop(Coordinate coordinate){
 		hits.push(coordinate);
 	}

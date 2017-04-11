@@ -6,22 +6,34 @@ import battleship.service.RandomNumber;
 import battleship.service.SimType;
 import battleship.service.Status;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Lindsey
+ * The Class MainGame.
  *
+ * @author Lindsey
  */
 public class MainGame {
 
+	/** The player. */
 	Player player;
+	
+	/** The player 2. */
 	Player player2;
+	
+	/** The play. */
 	Play play;
 	
+	/**
+	 * Instantiates a new main game.
+	 */
 	public MainGame(){
 		
 	}
 	
 	/**
-	 * @param humanPlayer
+	 * Instantiates a new main game.
+	 *
+	 * @param humanPlayer the human player
 	 */
 	public MainGame(boolean humanPlayer){
 		
@@ -31,8 +43,9 @@ public class MainGame {
 	}
 	
 	/**
-	 * Builds a new game
-	 * @param type
+	 * Builds a new game.
+	 *
+	 * @param type the type
 	 */
 	public void build(boolean type){
 	
@@ -54,9 +67,10 @@ public class MainGame {
 	}
 	
 	/**
-	 * Runs the game of the type selected
-	 * @param type
-	 * @return
+	 * Runs the game of the type selected.
+	 *
+	 * @param type the type
+	 * @return true, if successful
 	 */
 	public boolean run(SimType type){
 	
@@ -94,9 +108,11 @@ public class MainGame {
 	
 	
 	/**
-	 * @param x
-	 * @param y
-	 * @return
+	 * Gets the player 1 square status.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @return the player 1 square status
 	 */
 	public Status getPlayer1SquareStatus(int x, int y){
 		return player.getSquareStatus(x, y);

@@ -1,45 +1,58 @@
 package battleship.game;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Lindsey
+ * The Interface Play.
  *
+ * @author Lindsey
  */
 public interface Play {
 
 	/**
-	 * Check if the game has been won
-	 * @param player
-	 * @return
+	 * Check if the game has been won.
+	 *
+	 * @param player the player
+	 * @return true, if successful
 	 */
 	public boolean checkWinner(Player player);
 	
 	/**
-	 * @param player
-	 * @return
+	 * Basic play.
+	 *
+	 * @param player the player
+	 * @return true, if successful
 	 */
 	public boolean basicPlay(Player player);
 	
 	/**
-	 * @param player
-	 * @return
+	 * Basic with boat finder.
+	 *
+	 * @param player the player
+	 * @return true, if successful
 	 */
 	public boolean basicWithBoatFinder(Player player);
 	
 	/**
-	 * @param player
-	 * @return
+	 * Basic with boat finder parity.
+	 *
+	 * @param player the player
+	 * @return true, if successful
 	 */
 	public boolean basicWithBoatFinderParity(Player player);
 	
 	/**
-	 * @param player
-	 * @return
+	 * Basic with smart boat finder.
+	 *
+	 * @param player the player
+	 * @return true, if successful
 	 */
 	public boolean basicWithSmartBoatFinder(Player player);
 		
 	/**
-	 * @param player
-	 * @return
+	 * Basic with smart boat finder parity.
+	 *
+	 * @param player the player
+	 * @return true, if successful
 	 */
 	public boolean basicWithSmartBoatFinderParity(Player player);
 			

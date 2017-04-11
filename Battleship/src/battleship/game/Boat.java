@@ -5,33 +5,38 @@ import java.util.List;
 
 import battleship.service.Coordinate;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author Lindsey
+ * The Class Boat.
  *
+ * @author Lindsey
  */
 public class Boat {
 
+	/** The length. */
 	private int length;
 	
+	/** The name. */
 	private String name;
 	
+	/** The sunk. */
 	private boolean sunk;
 	
-	/**
-	 * 	The set of coordinates the boat is on
-	 */
+	/** 	The set of coordinates the boat is on. */
 	private List<Coordinate> coordinates;
 	
 	/**
-	 * 
+	 * Instantiates a new boat.
 	 */
 	public Boat(){
 		
 	}
 	
 	/**
-	 * @param newLength
-	 * @param newName
+	 * Instantiates a new boat.
+	 *
+	 * @param newLength the new length
+	 * @param newName the new name
 	 */
 	public Boat(int newLength, String newName){
 		
@@ -43,71 +48,91 @@ public class Boat {
 	}
 	
 	/**
-	 * @param newLength
+	 * Sets the length.
+	 *
+	 * @param newLength the new length
 	 */
 	public void setLength(int newLength){
 		this.length = newLength;	
 	}
 	
 	/**
-	 * @return
+	 * Gets the length.
+	 *
+	 * @return the length
 	 */
 	public int getLength(){
 		return this.length;
 	}
 	
 	/**
-	 * @param newName
+	 * Sets the name.
+	 *
+	 * @param newName the new name
 	 */
 	public void setName(String newName){
 		this.name = newName;	
 	}
 	
 	/**
-	 * @return
+	 * Gets the name.
+	 *
+	 * @return the name
 	 */
 	public String getName(){
 		return this.name;
 	}
 	
 	/**
-	 * @param newSunk
+	 * Sets the sunk.
+	 *
+	 * @param newSunk the new sunk
 	 */
 	public void setSunk(boolean newSunk){
 		this.sunk = newSunk;	
 	}
 	
 	/**
-	 * @return
+	 * Gets the sunk.
+	 *
+	 * @return the sunk
 	 */
 	public boolean getSunk(){
 		return this.sunk;
 	}
 	
 	/**
-	 * @param newCoordinates
+	 * Adds the coordinates.
+	 *
+	 * @param newCoordinates the new coordinates
 	 */
 	public void addCoordinates(Coordinate newCoordinates){
 		this.coordinates.add(newCoordinates);	
 	}
 	
 	/**
-	 * @param newCoordinates
+	 * Sets the coordinates.
+	 *
+	 * @param newCoordinates the new coordinates
 	 */
 	public void setCoordinates(List<Coordinate> newCoordinates){
 		this.coordinates = newCoordinates;	
 	}
 	
 	/**
-	 * @return
+	 * Gets the coordinates list.
+	 *
+	 * @return the coordinates list
 	 */
 	public List<Coordinate> getCoordinatesList(){
 		return this.coordinates;
 	}
 	
 	/**
-	 * @param coordinate
-	 * @return
+	 * Gets the checks if is in coordinate list.
+	 *
+	 * @param coordinate the coordinate
+	 * @return the checks if is in coordinate list
 	 */
 	public boolean getIsInCoordinateList(Coordinate coordinate){
 		
