@@ -1,8 +1,18 @@
 package battleship.service;
 
+/**
+ * @author Lindsey
+ *
+ */
 public class GridProb {
 
-public static int getDefaultSquareProb(int x, int y){
+	/**
+	 * Gets the starting probability
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public static int getDefaultSquareProb(int x, int y){
 		
 		int prob = 10;
 		

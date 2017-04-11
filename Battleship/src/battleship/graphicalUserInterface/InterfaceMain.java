@@ -4,6 +4,10 @@ import javax.swing.JFrame;
 
 import battleship.game.MainGame;
 
+/**
+ * @author Lindsey
+ *
+ */
 public class InterfaceMain {
 
 	public static void main(String[] args)

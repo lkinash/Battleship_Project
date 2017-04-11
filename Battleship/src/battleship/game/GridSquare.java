@@ -2,6 +2,10 @@ package battleship.game;
 
 import battleship.service.Coordinate;
 
+/**
+ * @author Lindsey
+ *
+ */
 public class GridSquare {
 	
 	private boolean boat;
@@ -14,6 +18,11 @@ public class GridSquare {
 		
 	}
 	
+	/**
+	 * @param hasBoat
+	 * @param hasShot
+	 * @param prob
+	 */
 	public GridSquare(boolean hasBoat, boolean hasShot, int prob){
 		
 		this.boat = hasBoat;
@@ -22,26 +31,44 @@ public class GridSquare {
 		
 	}
 	
+	/**
+	 * @param newBoat
+	 */
 	public void setBoat(boolean newBoat){
 		this.boat = newBoat;	
 	}
 	
+	/**
+	 * @return
+	 */
 	public boolean getBoat(){
 		return this.boat;
 	}
 	
+	/**
+	 * @param newShot
+	 */
 	public void setShot(boolean newShot){
 		this.shot = newShot;	
 	}
 	
+	/**
+	 * @return
+	 */
 	public boolean getShot(){
 		return this.shot;
 	}
 	
+	/**
+	 * @param newProb
+	 */
 	public void setProb(int newProb){
 		this.probability = newProb;	
 	}
 	
+	/**
+	 * @return
+	 */
 	public int getProb(){
 		return this.probability;
 	}

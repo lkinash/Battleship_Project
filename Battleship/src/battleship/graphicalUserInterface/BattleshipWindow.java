@@ -24,6 +24,10 @@ import battleship.service.Constants;
 import battleship.service.SimType;
 import battleship.service.Status;
 
+/**
+ * @author Lindsey
+ *
+ */
 public class BattleshipWindow extends JFrame{
 
 	JPanel mainPanel = new JPanel();
@@ -48,6 +52,9 @@ public class BattleshipWindow extends JFrame{
 	
 	boolean win;
 	
+	/**
+	 * 
+	 */
 	public void runGame(){
 		
 		delay = 750;

@@ -1,5 +1,9 @@
 package battleship.service;
 
+/**
+ * @author Lindsey
+ *
+ */
 public class Coordinate {
 
 	private int x;
@@ -10,6 +14,10 @@ public class Coordinate {
 		
 	}
 	
+	/**
+	 * @param newX
+	 * @param newY
+	 */
 	public Coordinate(int newX, int newY){
 	
 		this.x = newX;
@@ -33,6 +41,9 @@ public class Coordinate {
 		return this.y;
 	}
 	
+	/**
+	 * 	Print the coordinate called
+	 */
 	public void printCoordinate(){
 		System.out.println("X: " + x + ", Y: " + y);
 	}

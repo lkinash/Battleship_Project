@@ -1,5 +1,9 @@
 package battleship.service;
 
+/**
+ * @author Lindsey
+ *
+ */
 public class Constants {
 
 	public static int GRID_SIZE = 10;

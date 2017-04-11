@@ -11,6 +11,10 @@ import battleship.service.GridProb;
 import battleship.service.RandomNumber;
 import battleship.service.Status;
 
+/**
+ * @author Lindsey
+ *
+ */
 public class Player {
 
 	private boolean isHuman;

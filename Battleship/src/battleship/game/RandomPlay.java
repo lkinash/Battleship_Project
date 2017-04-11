@@ -4,12 +4,19 @@ import battleship.service.Constants;
 import battleship.service.Coordinate;
 import battleship.service.RandomNumber;
 
+/**
+ * @author Lindsey
+ *
+ */
 public class RandomPlay implements Play {
 
 	public RandomPlay(){
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see battleship.game.Play#checkWinner(battleship.game.Player)
+	 */
 	public boolean checkWinner(Player player){
 		if(player.getWinner()){
 			return true;
@@ -18,6 +25,9 @@ public class RandomPlay implements Play {
 			return false;
 	}
 	
+	/* (non-Javadoc)
+	 * @see battleship.game.Play#basicPlay(battleship.game.Player)
+	 */
 	public boolean basicPlay(Player player){
 			
 		int x, y;
@@ -39,6 +49,9 @@ public class RandomPlay implements Play {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see battleship.game.Play#basicWithBoatFinder(battleship.game.Player)
+	 */
 	public boolean basicWithBoatFinder(Player player){
 		
 		int x, y;
@@ -121,6 +134,9 @@ public class RandomPlay implements Play {
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see battleship.game.Play#basicWithBoatFinderParity(battleship.game.Player)
+	 */
 	public boolean basicWithBoatFinderParity(Player player){
 		
 		int x, y;
@@ -207,6 +223,9 @@ public class RandomPlay implements Play {
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see battleship.game.Play#basicWithSmartBoatFinder(battleship.game.Player)
+	 */
 	public boolean basicWithSmartBoatFinder(Player player){
 		
 		int x, y;
@@ -309,6 +328,9 @@ public class RandomPlay implements Play {
 	}		
 	
 
+	/* (non-Javadoc)
+	 * @see battleship.game.Play#basicWithSmartBoatFinderParity(battleship.game.Player)
+	 */
 	public boolean basicWithSmartBoatFinderParity(Player player){
 	
 		int x, y;
