@@ -1,6 +1,6 @@
 package battleship.game;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Interface Play.
  *

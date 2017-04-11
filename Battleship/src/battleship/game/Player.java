@@ -11,7 +11,6 @@ import battleship.service.GridProb;
 import battleship.service.RandomNumber;
 import battleship.service.Status;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Player.
  *

@@ -2,7 +2,6 @@ package battleship.service;
 
 import java.util.Random;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class RandomNumber.
  *

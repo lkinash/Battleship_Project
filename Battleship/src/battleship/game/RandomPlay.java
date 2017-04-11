@@ -4,7 +4,7 @@ import battleship.service.Constants;
 import battleship.service.Coordinate;
 import battleship.service.RandomNumber;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class RandomPlay.
  *

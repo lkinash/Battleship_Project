@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 import battleship.game.MainGame;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class InterfaceMain.
  *

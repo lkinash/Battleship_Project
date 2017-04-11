@@ -2,7 +2,7 @@ package battleship.game;
 
 import battleship.service.Coordinate;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class GridSquare.
  *

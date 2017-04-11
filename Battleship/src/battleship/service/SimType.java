@@ -1,6 +1,5 @@
 package battleship.service;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Enum SimType.
  *

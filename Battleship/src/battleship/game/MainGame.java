@@ -6,7 +6,7 @@ import battleship.service.RandomNumber;
 import battleship.service.SimType;
 import battleship.service.Status;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class MainGame.
  *

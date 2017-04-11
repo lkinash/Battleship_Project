@@ -5,7 +5,6 @@ import java.util.List;
 
 import battleship.service.Coordinate;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Boat.
  *

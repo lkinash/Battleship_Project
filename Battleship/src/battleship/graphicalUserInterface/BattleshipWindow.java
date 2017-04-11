@@ -24,7 +24,7 @@ import battleship.service.Constants;
 import battleship.service.SimType;
 import battleship.service.Status;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class BattleshipWindow.
  *
