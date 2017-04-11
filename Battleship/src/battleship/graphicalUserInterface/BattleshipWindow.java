@@ -120,6 +120,9 @@ public class BattleshipWindow extends JFrame{
 		
 	}
 	
+	/**
+	 * @return
+	 */
 	public JPanel gamePanel(){
 	
 		JPanel gamePanel = new JPanel();
@@ -162,7 +165,15 @@ public class BattleshipWindow extends JFrame{
 	     
 	
 
+	/**
+	 * @author Lindsey
+	 *
+	 */
 	class randomListener implements ActionListener{					
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent event) 				
 		{
 			game.build(true);
@@ -195,7 +206,15 @@ public class BattleshipWindow extends JFrame{
 		
 	}
 	
+	/**
+	 * @author Lindsey
+	 *
+	 */
 	class randomBoatFinderListener implements ActionListener{					
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent event) 				
 		{
 			game.build(true);
@@ -228,7 +247,15 @@ public class BattleshipWindow extends JFrame{
 		
 	}
 	
+	/**
+	 * @author Lindsey
+	 *
+	 */
 	class randomBoatFinderParityListener implements ActionListener{					
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent event) 				
 		{
 			game.build(true);
@@ -261,7 +288,15 @@ public class BattleshipWindow extends JFrame{
 		
 	}
 	
+	/**
+	 * @author Lindsey
+	 *
+	 */
 	class randomSmartFinderListener implements ActionListener{					
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent event) 				
 		{
 			game.build(true);
@@ -294,7 +329,15 @@ public class BattleshipWindow extends JFrame{
 		
 	}
 	
+	/**
+	 * @author Lindsey
+	 *
+	 */
 	class randomSmartFinderParityListener implements ActionListener{					
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent event) 				
 		{
 			
@@ -328,7 +371,15 @@ public class BattleshipWindow extends JFrame{
 		
 	}
 	
+	/**
+	 * @author Lindsey
+	 *
+	 */
 	class probListener implements ActionListener{					
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent event) 				
 		{
 			
@@ -362,7 +413,15 @@ public class BattleshipWindow extends JFrame{
 		
 	}
 	
+	/**
+	 * @author Lindsey
+	 *
+	 */
 	class probBoatFinderListener implements ActionListener{					
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent event) 				
 		{
 			
@@ -396,7 +455,15 @@ public class BattleshipWindow extends JFrame{
 		
 	}
 	
+	/**
+	 * @author Lindsey
+	 *
+	 */
 	class probSmartFinderParityListener implements ActionListener{					
+		
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent event) 				
 		{
 			
@@ -431,6 +498,10 @@ public class BattleshipWindow extends JFrame{
 	}
 	
 			
+	/**
+	 * Runs the game for the type passed in
+	 * @param type
+	 */
 	public void runGamePlay(SimType type){
 		
 	
